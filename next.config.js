@@ -1,5 +1,6 @@
-const path = import('path');
-const { parsed } = import('dotenv').config({
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+const { parsed } = require('dotenv').config({
   path: path.resolve(__dirname, `.env.${process.env.NODE_ENV}`),
 });
 
