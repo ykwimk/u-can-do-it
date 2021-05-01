@@ -1,5 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const Layout = () => <div>hello world</div>;
+function Layout() {
+  return <div>hello world</div>;
+}
 
 export default Layout;
