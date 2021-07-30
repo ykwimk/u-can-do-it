@@ -30,6 +30,7 @@ function Home() {
             <FormControl margin="dense">
               <StyledTextField
                 color="primary"
+                type="password"
                 id="password"
                 label="비밀번호"
                 onChange={handleChange}

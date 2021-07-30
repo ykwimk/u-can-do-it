@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 function useHome() {
   const handleChange = useCallback((e) => {
