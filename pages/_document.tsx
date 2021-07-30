@@ -5,33 +5,31 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheets } from '@material-ui/styles';
 
 export default class UcdDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet();
+    const sheet = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        });
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App) => (props) => {
+          return sheet.collect(<App {...props} />);
+        },
+      });
 
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      };
-    } finally {
-      sheet.seal();
-    }
+    const initialProps = await Document.getInitialProps(ctx);
+    return {
+      ...initialProps,
+      styles: (
+        <>
+          {initialProps.styles}
+          {sheet.getStyleElement()}
+          {/*{sheetStyled.getStyleElement()}*/}
+        </>
+      ),
+    };
   }
 
   render() {

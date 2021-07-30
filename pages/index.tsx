@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../src/components/Layout';
+import Home from '../src/components/Home';
 
 function IndexPage() {
-  return <Layout />;
+  return <Home />;
 }
 
 export default IndexPage;
